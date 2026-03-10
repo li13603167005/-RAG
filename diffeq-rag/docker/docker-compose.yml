@@ -1,0 +1,66 @@
+# Milvus Docker Compose Configuration
+# 用于部署Milvus向量数据库
+
+version: '3.8'
+
+services:
+  # Milvus Standalone
+  milvus:
+    image: milvusdb/milvus:v2.4.0
+    container_name: milvus-standalone
+    environment:
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    volumes:
+      - ${DOCKER_VOLUME_DIRECTORY:-./milvus}/volumes:/var/lib/milvus
+    networks:
+      - milvus
+
+  # Etcd
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.5
+    container_name: milvus-etcd
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    volumes:
+      - ${DOCKER_VOLUME_DIRECTORY:-./milvus}/volumes/etcd:/etcd
+    command: etcd -advertise-client-urls=http://127.0.0.1:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+    networks:
+      - milvus
+
+  # MinIO
+  minio:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    container_name: milvus-minio
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    volumes:
+      - ${DOCKER_VOLUME_DIRECTORY:-./milvus}/volumes/minio:/minio_data
+    command: minio server /minio_data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+      - milvus
+
+  # Milvus Attu (Web UI)
+  attu:
+    image: zilliztech/attu:v2.4.0
+    container_name: milvus-attu
+    environment:
+      MILVUS_URL: milvus:19530
+    ports:
+      - "3000:3000"
+    networks:
+      - milvus
+
+networks:
+  milvus:
+    driver: bridge

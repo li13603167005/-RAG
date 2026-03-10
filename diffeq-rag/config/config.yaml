@@ -1,0 +1,32 @@
+# RAG Configuration
+# Milvus Configuration
+MILVUS_HOST: "localhost"
+MILVUS_PORT: 19530
+COLLECTION_NAME: "diffeq_knowledge_base"
+DIMENSION: 1024  # BGE-m3 dimension
+
+# Embedding Configuration
+EMBEDDING_MODEL: "BAAI/bge-m3"
+EMBEDDING_DEVICE: "cpu"  # or "cuda"
+
+# LLM Configuration
+LLM_MODEL: "gpt-4o"
+LLM_TEMPERATURE: 0.0
+LLM_MAX_TOKENS: 2000
+
+# Retrieval Configuration
+TOP_K: 5
+RETRIEVAL_THRESHOLD: 0.5
+RRF_K: 60  # RRF parameter
+
+# Chunking Configuration
+CHUNK_SIZE: 512
+CHUNK_OVERLAP: 128
+MIN_CHUNK_LENGTH: 50
+
+# LangGraph Configuration
+MAX_ITERATIONS: 3
+WEB_SEARCH_THRESHOLD: 0.3
+
+# RAGAS Evaluation
+EVAL_QUESTIONS_FILE: "data/eval_questions.json"

@@ -1,0 +1,15 @@
+# 核心依赖：解决 LangChain 不支持 Numpy 2.0 的问题
+numpy>=1.24.0,<2.0.0
+
+# PDF 解析：必须服从 pdfplumber 的硬性要求 (20231228)
+pdfminer.six==20231228
+pdfplumber==0.11.4
+unstructured[pdf]
+
+# 向量数据库：解决 pymilvus 与最新 grpcio 的冲突
+grpcio>=1.49.1,<=1.67.1
+pymilvus==2.4.12
+
+# 框架组件
+langchain==0.2.16
+langchain-community==0.2.16

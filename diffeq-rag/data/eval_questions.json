@@ -1,0 +1,52 @@
+[
+  {
+    "question": "什么是Sobolev空间？",
+    "ground_truth": "Sobolev空间是函数及其弱导数都属于L^p空间的函数空间。通常记为H^s或W^{s,p}，其中s表示导数的阶数，p表示L^p范数。",
+    "category": "基础概念"
+  },
+  {
+    "question": "Sobolev嵌入定理的内容是什么？",
+    "ground_truth": "Sobolev嵌入定理建立了Sobolev空间与常规函数空间之间的嵌入关系。当s > n/2时(n为空间维数)，H^s嵌入到连续函数空间C^{0,γ}，其中γ = s - n/2。",
+    "category": "嵌入定理"
+  },
+  {
+    "question": "H^1空间的定义是什么？",
+    "ground_truth": "H^1是Sob空间H^1(Ω)，表示一阶弱导数平方可积的函数空间。其范数定义为‖u‖_{H^1} = (∫_Ω(|u|² + |∇u|²)dx)^{1/2}。",
+    "category": "Sobolev空间"
+  },
+  {
+    "question": "Poincare不等式的条件是什么？",
+    "ground_truth": "Poincare不等式通常要求函数在有界域上且边界值为零。对于H^1_0(Ω)中的函数，存在常数C使得∫_Ω|u|²dx ≤ C∫_Ω|∇u|²dx。",
+    "category": "不等式"
+  },
+  {
+    "question": "椭圆型偏微分方程的特征是什么？",
+    "ground_truth": "椭圆型PDE的特征是没有实特征线，解通常是光滑的。典型例子包括Laplace方程和Poisson方程。椭圆性保证了初值问题的适定性。",
+    "category": "PDE类型"
+  },
+  {
+    "question": "Rellich-Kondrachov嵌入定理的内容？",
+    "ground_truth": "Rellich-Kondrachov嵌入定理表明在有界光滑域上，当p < n*时，W^{1,p}到L^q的嵌入是紧的，其中1/p = 1/q - 1/n。",
+    "category": "嵌入定理"
+  },
+  {
+    "question": "什么是弱解？",
+    "ground_truth": "弱解是通过积分形式定义的解，不需要解具有传统意义下的导数。对于椭圆方程，弱解属于Sobolev空间，通过变分方法定义。",
+    "category": "解的概念"
+  },
+  {
+    "question": "Gagliardo-Nirenberg不等式的内容？",
+    "ground_truth": "Gagliardo-Nirenberg不等式是Sobolev空间中的插值不等式，建立了不同范数之间的关系。例如‖u‖_{L^p} ≤ C‖u‖_{L^q}^θ‖u‖_{W^{1,r}}^{1-θ}。",
+    "category": "不等式"
+  },
+  {
+    "question": "什么是一致椭圆性条件？",
+    "ground_truth": "一致椭圆性条件要求算子的主系数满足λ|ξ|² ≤ a_{ij}ξ_iξ_j ≤ Λ|ξ|²，对所有ξ∈R^n和某个0 < λ ≤ Λ成立。",
+    "category": "椭圆算子"
+  },
+  {
+    "question": "Sobolev空间的迹定理内容？",
+    "ground_truth": "Sobolev空间的迹定理表明H^s(Ω)在边界∂Ω上定义的迹算子是有定义的。对于s > 1/2，迹算子可以延拓为从H^s到H^{s-1/2}(∂Ω)的连续线性算子。",
+    "category": "迹定理"
+  }
+]
