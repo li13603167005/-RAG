@@ -251,11 +251,3 @@ services:
 1. 修改 `src/graph/nodes.py` 中的节点逻辑
 2. 在 `src/graph/workflow.py` 中重新构建图
 3. 配置 Prompt 模板
-
-## 许可证
-
-MIT License
-
-## 贡献指南
-
-欢迎提交 Issue 和 Pull Request！
